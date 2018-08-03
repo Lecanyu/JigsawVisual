@@ -9,3 +9,5 @@ This tool has implemented several functions for various visualization, such as
 **_Eigen_ and _Opencv_**
 
 
+## Usage
+Check the main_xx.cpp for details about how to drive this visual tool.
