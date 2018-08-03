@@ -10,4 +10,4 @@ This tool has implemented several functions for various visualization, such as
 
 
 ## Usage
-Check the main_xx.cpp for details about how to drive this visual tool.
+Check the **_main_xxx.cpp_** for details about how to drive this visual tool.
