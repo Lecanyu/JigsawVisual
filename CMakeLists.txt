@@ -1,16 +1,27 @@
 cmake_minimum_required (VERSION 3.1)
 set (CMAKE_CXX_STANDARD 11)
 
-set(OpenCV_DIR /home/lecanyu/Downloads/opencv-3.4.1/build/release/share/OpenCV)
+project (JigsawVisual)
+
+
+set(OpenCV_DIR D:/opencv3.4.1/opencv/build)
 find_package(OpenCV REQUIRED)
 
-set(EIGEN3_INCLUDE_DIR /usr/include/eigen3)
+set(EIGEN3_INCLUDE_DIR D:/3rdParty/Eigen3.3.4)
 
 include_directories(${EIGEN3_INCLUDE_DIR})
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-project (JigsawVisual)
-aux_source_directory(. src)
-add_executable(JigsawVisual ${src})
+add_library(VisLib JigsawVisual.cpp JigsawVisualPair.cpp)
 
-target_link_libraries(JigsawVisual ${OpenCV_LIBS})
+
+add_executable(main_AssembleLoop main_AssembleLoop.cpp)
+add_executable(main_AssemblePair main_AssemblePair.cpp)
+add_executable(main_AssemblePose main_AssemblePose.cpp)
+add_executable(main_AssembleTopKPair main_AssembleTopKPair.cpp)
+
+target_link_libraries(main_AssembleLoop VisLib ${OpenCV_LIBS})
+target_link_libraries(main_AssemblePair VisLib ${OpenCV_LIBS})
+target_link_libraries(main_AssemblePose VisLib ${OpenCV_LIBS})
+target_link_libraries(main_AssembleTopKPair VisLib ${OpenCV_LIBS})
+

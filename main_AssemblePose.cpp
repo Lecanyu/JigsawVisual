@@ -36,13 +36,13 @@ int main(int argc, char**argv)
 	pose_file_type = arg_parser.get<int>("pose_file_type");
 	background_color = arg_parser.get<std::string>("background");*/
 
-	image_dir = "C:/Users/range/Desktop/ImageDB-2360parts-BGU_3_10x10/";
-	background_color = "248 8 248";
+	image_dir = "../../example/";
+	background_color = "8 8 248";
 	/*pose_file = "C:/Users/range/Desktop/jigsaw_pose.txt";
 	pose_file_type = 0;*/
-	pose_file = "C:/Users/range/Desktop/ImageDB-2360parts-BGU_3_10x10/pose_opt2_chunk0.txt";
+	pose_file = "../../example/matrix_pose.txt";
 	pose_file_type = 0;
-	savefile = "gt.png";
+	savefile = "../../example/assemble.png";
 
 	std::istringstream iss(background_color);
 	std::vector<std::string> results(std::istream_iterator < std::string > {iss},
@@ -55,8 +55,8 @@ int main(int argc, char**argv)
 	visual.CropImages(r, g, b);
 	visual.AssembleAllImages(r, g, b);
 
-	/*cv::imshow("image", visual.assembledImg_);
-	cv::waitKey();*/
+	cv::imshow("image", visual.assembledImg_);
+	cv::waitKey();
 	cv::imwrite(savefile, visual.assembledImg_);
 	std::cout << "Save to Assembled.png\n";
 
